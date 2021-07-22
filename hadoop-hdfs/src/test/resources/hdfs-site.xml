@@ -40,26 +40,26 @@
     <!-- cluster to machine reflection -->
     <property>
         <name>dfs.nameservices</name>
-        <value>mycluster</value>
+        <value>cluster-hdfs</value>
     </property>
     <property>
-        <name>dfs.ha.namenodes.mycluster</name>
+        <name>dfs.ha.namenodes.cluster-hdfs</name>
         <value>nn1,nn2</value>
     </property>
     <property>
-        <name>dfs.namenode.rpc-address.mycluster.nn1</name>
+        <name>dfs.namenode.rpc-address.cluster-hdfs.nn1</name>
         <value>node01:8020</value>
     </property>
     <property>
-        <name>dfs.namenode.rpc-address.mycluster.nn2</name>
+        <name>dfs.namenode.rpc-address.cluster-hdfs.nn2</name>
         <value>node02:8020</value>
     </property>
     <property>
-        <name>dfs.namenode.http-address.mycluster.nn1</name>
+        <name>dfs.namenode.http-address.cluster-hdfs.nn1</name>
         <value>node01:50070</value>
     </property>
     <property>
-        <name>dfs.namenode.http-address.mycluster.nn2</name>
+        <name>dfs.namenode.http-address.cluster-hdfs.nn2</name>
         <value>node02:50070</value>
     </property>
 
@@ -67,7 +67,7 @@
     <!-- In which machine the journalNode start , and the data directory -->
     <property>
         <name>dfs.namenode.shared.edits.dir</name>
-        <value>qjournal://node01:8485;node02:8485;node03:8485/mycluster</value>
+        <value>qjournal://node01:8485;node02:8485;node03:8485/cluster-hdfs</value>
     </property>
     <property>
         <name>dfs.journalnode.edits.dir</name>
@@ -76,7 +76,7 @@
 
     <!-- ProxyClass used to change NameNode role, and method how to change -->
     <property>
-        <name>dfs.client.failover.proxy.provider.mycluster</name>
+        <name>dfs.client.failover.proxy.provider.cluster-hdfs</name>
         <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
     </property>
     <property>

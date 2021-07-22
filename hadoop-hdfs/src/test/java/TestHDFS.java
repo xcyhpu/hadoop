@@ -43,14 +43,14 @@ public class TestHDFS {
     @Test
     public void testMakeDir() throws Exception {
 
-        fs = FileSystem.get(URI.create("hdfs://mycluster"), conf, "root");
+        fs = FileSystem.get(URI.create("hdfs://cluster-hdfs"), conf, "root");
 
         Path path1 = new Path("/user/root");
         boolean exists = fs.exists(path1);
 
         LOG.info(path1 + "是否存在：" + exists);
 
-        Path path = new Path("/user/client");
+        Path path = new Path("/data/wc/input");
         if(!fs.exists(path)) {
             boolean mkdirs = fs.mkdirs(path);
             System.out.println(mkdirs);
@@ -69,7 +69,7 @@ public class TestHDFS {
 //        conf.set("dfs.namenode.fs-limits.min-block-size", "1024");
 
         // 这种方式可以上传
-        fs = FileSystem.get(URI.create("hdfs://mycluster"), conf, "root");
+        fs = FileSystem.get(URI.create("hdfs://cluster-hdfs"), conf, "root");
 
         // 这种方式上传不了，因为使用本地用户 ht_admin登录到hdfs的，而/user/client是由root用户创建的
         // 除非设置了HADOOP_USER 环境变量
