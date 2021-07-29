@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="3 seconds">
+
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%thread] %-5level %logger{36} - %msg%n" />
+<!--    <property name="CATALINA_BASE" value="/Users/ht_admin/Desktop/logs/" />-->
+    <property name="CATALINA_BASE" value="/" />
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${CATALINA_BASE}/logs/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${CATALINA_BASE}/logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${CATALINA_BASE}/logs/all.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${CATALINA_BASE}/logs/all.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="ALL"/>
+        <appender-ref ref="ERROR"/>
+    </root>
+
+    <logger name="org.springframework" level="DEBUG">
+    </logger>
+    <logger name="org.apache" level="INFO">
+    </logger>
+
+</configuration>
