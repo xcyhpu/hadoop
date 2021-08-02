@@ -64,7 +64,7 @@ public class MyFriend {
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(IntWritable.class);
 
-            job.setNumReduceTasks(0);
+//            job.setNumReduceTasks(0);
 
             job.setReducerClass(FriendReducer.class);
 
